@@ -3,11 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>beforeRunningCommand</key>
-	<string>nop</string>
+	<string>saveModifiedFiles</string>
 	<key>command</key>
 	<string>#!/usr/bin/env sh
 
-open "http://localhost:8888/"</string>
+cd "$TM_DIRECTORY"
+echo "&lt;pre&gt;"
+/usr/bin/rake spec:js "FILE=$TM_FILEPATH"
+echo "&lt;/pre&gt;"</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
@@ -15,7 +18,7 @@ open "http://localhost:8888/"</string>
 	<key>name</key>
 	<string>Run Examples</string>
 	<key>output</key>
-	<string>showAsTooltip</string>
+	<string>showAsHTML</string>
 	<key>scope</key>
 	<string>source.js.jasmine</string>
 	<key>uuid</key>
